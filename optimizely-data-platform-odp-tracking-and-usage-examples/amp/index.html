@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>Optimizely Data Platform (ODP) - Tracking and Usage Examples</title>
+
+    <meta name="description" content="Getting started with Optimizely Data Platform -- Some example tracking and usage of ODP" />
+    <link rel="canonical" href="https://blog.danisaacs.net/optimizely-data-platform-odp-tracking-and-usage-examples/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="danisaacs.net" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Optimizely Data Platform (ODP) - Tracking and Usage Examples" />
+    <meta property="og:description" content="Getting started with Optimizely Data Platform -- Some example tracking and usage of ODP" />
+    <meta property="og:url" content="https://blog.danisaacs.net/optimizely-data-platform-odp-tracking-and-usage-examples/" />
+    <meta property="og:image" content="https://blog.danisaacs.net/content/images/2022/01/odp.png" />
+    <meta property="article:published_time" content="2022-01-14T02:30:44.000Z" />
+    <meta property="article:modified_time" content="2022-01-14T03:26:20.000Z" />
+    <meta property="article:tag" content="optimizely" />
+    <meta property="article:tag" content="odp" />
+    <meta property="article:tag" content="optimizely data platform" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Optimizely Data Platform (ODP) - Tracking and Usage Examples" />
+    <meta name="twitter:description" content="Getting started with Optimizely Data Platform -- Some example tracking and usage of ODP" />
+    <meta name="twitter:url" content="https://blog.danisaacs.net/optimizely-data-platform-odp-tracking-and-usage-examples/" />
+    <meta name="twitter:image" content="https://blog.danisaacs.net/content/images/2022/01/odp.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Dan Isaacs" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="optimizely, odp, optimizely data platform" />
+    <meta property="og:image:width" content="225" />
+    <meta property="og:image:height" content="225" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "danisaacs.net",
+        "url": "https://blog.danisaacs.net/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog.danisaacs.net/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Dan Isaacs",
+        "url": "https://blog.danisaacs.net/author/dan/",
+        "sameAs": []
+    },
+    "headline": "Optimizely Data Platform (ODP) - Tracking and Usage Examples",
+    "url": "https://blog.danisaacs.net/optimizely-data-platform-odp-tracking-and-usage-examples/",
+    "datePublished": "2022-01-14T02:30:44.000Z",
+    "dateModified": "2022-01-14T03:26:20.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://blog.danisaacs.net/content/images/2022/01/odp.png",
+        "width": 225,
+        "height": 225
+    },
+    "keywords": "optimizely, odp, optimizely data platform",
+    "description": "Getting started with Optimizely Data Platform -- Some example tracking and usage of ODP",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://blog.danisaacs.net/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.32" />
+    <link rel="alternate" type="application/rss+xml" title="danisaacs.net" href="https://blog.danisaacs.net/rss/" />
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content blockquote.kg-blockquote-alt {
+        font-size: 1.2em;
+        font-style: italic;
+        line-height: 1.6em;
+        text-align: center;
+        color: #738a94;
+        padding: 0.75em 3em 1.25em;
+    }
+
+    .post-content blockquote.kg-blockquote-alt::before {
+        display: none;
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 3px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-toggle-card-icon {
+        display: none;
+    }
+
+    .kg-toggle-content {
+        margin-top: 0.8rem;
+    }
+
+    .kg-product-card-container {
+        background: transparent;
+        padding: 20px;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: inset 0 0 0 1px rgb(124 139 154 / 25%);
+    }
+
+    .kg-product-card-description p {
+        margin-top: 1.5em;
+    }
+
+    .kg-product-card-description ul {
+        margin-left: 24px;
+    }
+
+    .kg-product-card-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+    }
+
+    .kg-product-card-rating-star {
+        height: 28px;
+        width: 20px;
+        margin-right: 2px;
+    }
+
+    .kg-product-card-rating-star svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    opacity: 0.15;
+    }
+
+    .kg-product-card-rating-active.kg-product-card-rating-star svg {
+    opacity: 1;
+    }
+
+    .kg-nft-card-container {
+        position: relative;
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        text-decoration: none;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);
+        width: 100%;
+        max-width: 512px;
+        color: #15212A;
+        background: #fff;
+        border-radius: 5px;
+        transition: none;
+        margin: 0 auto;
+    }
+
+    .kg-nft-metadata {
+        padding: 2.0rem;
+    }
+
+    .kg-nft-image-container {
+        position: relative;
+    }
+
+    .kg-nft-image {
+        display: flex;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .kg-nft-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kg-nft-header h4.kg-nft-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin: 0;
+        color: #15212A;
+    }
+
+    .kg-nft-header amp-img {
+        max-width: 114px;
+        max-height: 26px;
+    }
+
+    .kg-nft-opensea-logo {
+        margin-top: 2px;
+        width: 100px;
+    }
+
+    .kg-nft-creator {
+        font-family: inherit;
+        color: #95A1AD;
+    }
+
+    .kg-nft-creator span {
+        font-weight: 500;
+        color: #15212A;
+    }
+
+    .kg-nft-card p.kg-nft-description {
+        font-size: 1.4rem;
+        line-height: 1.4em;
+        margin: 2.0rem 0 0;
+        color: #222;
+    }
+
+    .kg-button-card {
+        display: flex;
+        position: static;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kg-btn {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 2.0rem;
+        height: 4.0rem;
+        line-height: 4.0rem;
+        font-size: 1.65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .kg-btn:hover {
+        opacity: 0.85;
+    }
+
+    .kg-btn-accent {
+        background-color: var(--ghost-accent-color, #1292EE);
+        color: #fff;
+    }
+
+    .kg-callout-card {
+        display: flex;
+        padding: 20px 28px;
+        border-radius: 3px;
+    }
+
+    .kg-callout-card-grey {
+        background: rgba(124, 139, 154, 0.13);
+    }
+
+    .kg-callout-card-white {
+        background: transparent;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-callout-card-blue {
+        background: rgba(33, 172, 232, 0.12);
+    }
+
+    .kg-callout-card-green {
+        background: rgba(52, 183, 67, 0.12);
+    }
+
+    .kg-callout-card-yellow {
+        background: rgba(240, 165, 15, 0.13);
+    }
+
+    .kg-callout-card-red {
+        background: rgba(209, 46, 46, 0.11);
+    }
+
+    .kg-callout-card-pink {
+        background: rgba(225, 71, 174, 0.11);
+    }
+
+    .kg-callout-card-purple {
+        background: rgba(135, 85, 236, 0.12);
+    }
+
+    .kg-callout-card-accent {
+        background: var(--ghost-accent-color);
+        color: #fff;
+    }
+
+    .kg-callout-card-accent a {
+        color: #fff;
+    }
+
+    .kg-callout-emoji {
+        padding-right: 16px;
+        line-height: 1.3;
+        font-size: 1.25em;
+    }
+
+    .kg-header-card {
+        padding: 6em 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .kg-header-card.kg-size-small {
+        padding-top: 4em;
+        padding-bottom: 4em;
+    }
+
+    .kg-header-card.kg-size-large {
+        padding-top: 12em;
+        padding-bottom: 12em;
+    }
+
+    .kg-header-card.kg-width-full {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    .kg-header-card.kg-align-left {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .kg-header-card.kg-style-dark {
+        background: #15171a;
+        color: #ffffff;
+    }
+
+    .kg-header-card.kg-style-light {
+        color: #15171a;
+        border: 1px solid rgba(124, 139, 154, 0.25);
+        border-width: 1px 0;
+    }
+
+    .kg-header-card.kg-style-accent {
+        background-color: var(--ghost-accent-color);
+    }
+
+    .kg-header-card.kg-style-image {
+        background-color: #e7e7eb;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .kg-header-card h2 {
+        font-size: 4em;
+        font-weight: 700;
+        line-height: 1.1em;
+        margin: 0;
+    }
+
+    .kg-header-card h2 strong {
+        font-weight: 800;
+    }
+
+    .kg-header-card.kg-size-small h2 {
+        font-size: 3em;
+    }
+
+    .kg-header-card.kg-size-large h2 {
+        font-size: 5em;
+    }
+
+    .kg-header-card h3 {
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.3em;
+        margin: 0;
+    }
+
+    .kg-header-card h3 strong {
+        font-weight: 600;
+    }
+
+    .kg-header-card.kg-size-small h3 {
+        font-size: 1em;
+    }
+
+    .kg-header-card.kg-size-large h3 {
+        font-size: 1.5em;
+    }
+
+    .kg-header-card:not(.kg-style-light) h2,
+    .kg-header-card:not(.kg-style-light) h3 {
+        color: #ffffff;
+    }
+
+    .kg-header-card a.kg-header-card-button {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 1.2em;
+        height: 2.4em;
+        line-height: 1em;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 0.95em;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+        background-color: var(--ghost-accent-color);
+        color: #ffffff;
+        margin: 1.75em 0 0;
+    }
+
+    .kg-header-card a.kg-header-card-button:hover {
+        opacity: 0.85;
+    }
+
+    .kg-header-card.kg-size-large a.kg-header-card-button {
+        margin-top: 2em;
+    }
+
+    .kg-header-card.kg-size-small a.kg-header-card-button {
+        margin-top: 1.5em;
+    }
+
+    .kg-header-card.kg-style-image a.kg-header-card-button,
+    .kg-header-card.kg-style-dark a.kg-header-card-button {
+        background: #ffffff;
+        color: #15171a;
+    }
+
+    .kg-header-card.kg-style-accent a.kg-header-card-button {
+        background: #ffffff;
+        color: var(--ghost-accent-color);
+    }
+
+    .kg-audio-card {
+        display: flex;
+        width: 100%;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-audio-thumbnail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        background: transparent;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .kg-audio-thumbnail.placeholder {
+        background: var(--ghost-accent-color);
+    }
+
+    .kg-audio-thumbnail.placeholder svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    .kg-audio-player-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        --seek-before-width: 0%;
+        --volume-before-width: 100%;
+        --buffered-width: 0%;
+    }
+
+    .kg-audio-title {
+        width: 100%;
+        padding: 8px 12px 0;
+        border: none;
+        font-family: inherit;
+        font-size: 1.1em;
+        font-weight: 700;
+        background: transparent;
+    }
+
+    .kg-audio-player {
+        display: none;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #FF1A75;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="https://blog.danisaacs.net">
+                danisaacs.net
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Optimizely Data Platform (ODP) - Tracking and Usage Examples</h1>
+                <section class="post-meta">
+                    Dan Isaacs -
+                    <time class="post-date" datetime="2022-01-13">13 Jan 2022</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://blog.danisaacs.net/content/images/2022/01/odp.png" width="600" height="340" layout="responsive"></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p>The goal of this post is to provide some examples of working with <a href="https://www.optimizely.com/products/intelligence/data-platform/">Optimizely Data Platform (ODP)</a> with <a href="https://www.optimizely.com/products/content/">Optimizely Content Cloud</a> and <a href="https://www.optimizely.com/products/commerce/b2c/">Commerce Cloud</a>. Note that, while focused on those platforms using our <a href="https://github.com/episerver/Foundation">Foundation reference implementation</a>, the overall strategies can be used for tracking on any solution.</p><p>Rather than recreate the wheel, for a great starting point please reference David Knipe's blog post <a href="https://www.david-tec.com/2021/05/adding-optimizely-data-platform-to-optimizely-commerce-cloud/">"Adding Optimizely Data Platform to Optimizely Commerce Cloud"</a>. It provides a very solid base on which to build, and allows us to go straight into other tracking examples and how you might use the data in ODP itself. One key step from that blog post you must complete is to add the standard JavaScript tracking script for ODP to your site, to enable pageview and customer tracking. The script can be found by going to the ODP "Integrations" admin screen, and clicking into the "JavaScript Tag" integration -- refer to the <a href="https://docs.zaius.com/hc/en-us/articles/360033327194-Install-the-Zaius-JavaScript-tag">ODP JavaScript tag documentation here</a> for more details.</p><p>Now, let's get into some custom event tracking.</p><h2 id="optimizely-forms-events">Optimizely Forms Events</h2><h3 id="odp-prep">ODP Prep</h3><p>First you'll need to create a new field in ODP. Log in to ODP, then go to account settings by clicking the gear icon in the top-right of the page.</p><figure class="kg-card kg-image-card"><amp-img src="https://blog.danisaacs.net/content/images/2022/01/adding_field-01.png" class="kg-image" alt width="224" height="101" layout="fixed"></amp-img></figure><p>Then select "Create New Field" to create the new property -- I used the following values (the "field name" will be used in the tracking section below):</p><figure class="kg-card kg-image-card"><amp-img src="https://blog.danisaacs.net/content/images/2022/01/adding_field-02.png" class="kg-image" alt width="564" height="89" layout="responsive"></amp-img></figure><h3 id="tracking">Tracking</h3><p>The example tracking below for Optimizely Forms leverages the available <a href="https://world.optimizely.com/documentation/developer-guides/forms/handling-events-for-forms/">Forms client-side events</a> to track form impressions and form submissions. Alternatively, form submission tracking could be done server-side by modifying it to use the .NET events documented on that page.</p><pre><code class="language-javascript">// ODP Tracking for Optimizely Forms
+
+if (typeof $$epiforms !== 'undefined') {
+    $$epiforms(document).ready(function myfunction() {
+        $$epiforms(".EPiServerForms").on("formsNavigationNextStep formsNavigationPrevStep formsSetupCompleted formsReset formsStartSubmitting formsSubmitted formsSubmittedError formsNavigateToStep formsStepValidating",
+            function (event, param1, param2) {
+                var eventType = event.type;
+                var formName = event.workingFormInfo.Name;
+
+                if (eventType == 'formsSetupCompleted') {
+                    console.log('ODP: web_form impression: ' + formName);
+                    zaius.event('web_form', { action: 'impression', form_name: formName });
+                } else if (eventType == 'formsStepValidating') {
+                    if (!event.isValid) {
+                        console.log('ODP: web_form validation failed: ' + formName);
+                        zaius.event('web_form', { action: 'submission_validation_failed', form_name: formName });
+                    }
+                } else if (eventType == 'formsSubmitted') {
+                    console.log('ODP: web_form submission: ' + formName);
+                    zaius.event('web_form', { action: 'submission', form_name: formName });
+                } else {
+                    // handle other form events here
+                }
+            });
+    });
+}</code></pre><p>Once that script is included on your site, then viewing a page with an Optimizely Form will trigger a "Web Form: Impression" event, and submitting a form will trigger a "Web Form: Submission" event:</p><figure class="kg-card kg-image-card"><amp-img src="https://blog.danisaacs.net/content/images/2022/01/form-events-impression-and-submission-v2.png" class="kg-image" alt width="706" height="94" srcset="https://blog.danisaacs.net/content/images/size/w600/2022/01/form-events-impression-and-submission-v2.png 600w, https://blog.danisaacs.net/content/images/2022/01/form-events-impression-and-submission-v2.png 706w" layout="responsive"></amp-img></figure><h3 id="usage-in-odp">Usage in ODP</h3><p>Once you're tracking those form events, you can start to put them to work for you. Some simple suggestions:</p><ul><li>Build a report in ODP to track overall form conversion rates (impressions vs submissions)</li><li>Build a report in ODP to track form conversion rates for a specific form across multiple pages -- which page has more success?</li><li>Build a segment of visitors that saw the form, but didn't submit it -- convert that to a Facebook lookalike audience, and target them in an ad campaign</li></ul><p>Let's walk through the steps for the first example -- a report to track form conversion rates:</p><figure class="kg-card kg-image-card"><amp-img src="https://blog.danisaacs.net/content/images/2022/01/forms-report-conversion-rate-by-form.png" class="kg-image" alt width="1106" height="263" srcset="https://blog.danisaacs.net/content/images/size/w600/2022/01/forms-report-conversion-rate-by-form.png 600w, https://blog.danisaacs.net/content/images/size/w1000/2022/01/forms-report-conversion-rate-by-form.png 1000w, https://blog.danisaacs.net/content/images/2022/01/forms-report-conversion-rate-by-form.png 1106w" layout="responsive"></amp-img></figure><ol><li>First, create a filter -- Event Type = "web_form" and Form Name is not empty</li></ol><figure class="kg-card kg-image-card"><amp-img src="https://blog.danisaacs.net/content/images/2022/01/form-events-filter.png" class="kg-image" alt width="542" height="383" layout="responsive"></amp-img></figure><p>2. Create a new report. Apply your new filter by clicking "All Traffic" in the top-left, and selecting your filter. Click the checkbox to apply:</p><figure class="kg-card kg-image-card"><amp-img src="https://blog.danisaacs.net/content/images/2022/01/form-events-apply-filter.png" class="kg-image" alt width="347" height="114" layout="responsive"></amp-img></figure><p>3. Add columns to your report -- in this example, I added the field "Form Name", and then the following rocket columns to get the count of impressions, submissions and the calculated conversion rate:</p><figure class="kg-card kg-image-card"><amp-img src="https://blog.danisaacs.net/content/images/2022/01/forms-report-conversion-rate-by-form-rocket-columns.png" class="kg-image" alt width="832" height="210" srcset="https://blog.danisaacs.net/content/images/size/w600/2022/01/forms-report-conversion-rate-by-form-rocket-columns.png 600w, https://blog.danisaacs.net/content/images/2022/01/forms-report-conversion-rate-by-form-rocket-columns.png 832w" layout="responsive"></amp-img></figure><p>Bonus: want to track an individual form, and see its success rate across different pages? Follow the steps above, and then:</p><ol><li>Use the "Simple Filter" option to specify the form by name (don't forget to click "Apply" after adding the simple filter!)</li></ol><figure class="kg-card kg-image-card"><amp-img src="https://blog.danisaacs.net/content/images/2022/01/forms-report-conversion-rate-by-form-quick-filter.png" class="kg-image" alt width="643" height="185" srcset="https://blog.danisaacs.net/content/images/size/w600/2022/01/forms-report-conversion-rate-by-form-quick-filter.png 600w, https://blog.danisaacs.net/content/images/2022/01/forms-report-conversion-rate-by-form-quick-filter.png 643w" layout="responsive"></amp-img></figure><p>2. Add the Page to the report columns.</p><figure class="kg-card kg-image-card"><amp-img src="https://blog.danisaacs.net/content/images/2022/01/forms-report-conversion-rate-by-page.png" class="kg-image" alt width="1026" height="230" srcset="https://blog.danisaacs.net/content/images/size/w600/2022/01/forms-report-conversion-rate-by-page.png 600w, https://blog.danisaacs.net/content/images/size/w1000/2022/01/forms-report-conversion-rate-by-page.png 1000w, https://blog.danisaacs.net/content/images/2022/01/forms-report-conversion-rate-by-page.png 1026w" layout="responsive"></amp-img></figure><h2 id="search-events">Search Events</h2><p>Note: the example tracking below is specific to the <a href="https://github.com/episerver/foundation">Foundation reference site</a>, but the principles will apply and can easily be modified to fit any search implementation.</p><h3 id="odp-prep-1">ODP Prep</h3><p>First, create a new field for the search term -- the scripts below use the field name "search_term", type "text".</p><h3 id="tracking-1">Tracking</h3><p>I've included three types of tracking below: the initial search event, searches with no results, and search result click tracking.</p><h4 id="initial-search-event">Initial Search Event</h4><pre><code class="language-javascript">// Enter for search
+$(document).keypress(function(event){
+    var key = event.which;
+    if(key == 13)  // the enter key code
+    {
+        var searchValue = null;
+        var searchInputs = $('.jsSearchText');
+        if (searchInputs != null)
+        {
+            for (var i = 0; i &lt; searchInputs.length; i++)
+            {
+                var input = searchInputs[i];
+                if (input.value != null &amp;&amp; input.value != '')
+                {
+                    searchValue = input.value;
+                    console.log('ODP: search: ' + searchValue);
+                    zaius.event('navigation', { action: 'search', search_term: searchValue });
+                }
+            }
+        }
+    }
+});</code></pre><h4 id="no-results-and-search-result-click-tracking">"No Results" and Search Result Click Tracking</h4><p>This script tracks searches that have no results, and also tracks search result clicks (breaking them up between clicks on content results versus product search results).</p><pre><code>$(document).ready(function() {
+	var searchValue = null;
+	const params = new URLSearchParams(window.location.search);
+	searchValue = params.get('search');
+		 
+	if (document.querySelector('.content-search-results') == null &amp;&amp; document.querySelector('.product-tile-grid') == null) 
+	{
+		 console.log("ODP: Track no search results")
+		 zaius.event('search', { action: 'no_results' , search_term: searchValue });
+	}
+	
+	$('.content-search-results &gt; a').click(function() {
+		let clickedLink = $(this).attr("href");
+		console.log("ODP: Track search result link click -- " + clickedLink + " (search term: " + searchValue + ")");
+		zaius.event('search', { action: 'click' , search_term: searchValue, search_clicked_content: clickedLink });
+	});
+
+	$('.product-tile-grid').click(function() {
+		let site = location.protocol + '//' + location.host;
+		let clickedProd = $(this).children('.product-tile-grid__title').children('a').attr("href");
+		let clickedProdLink  = site + clickedProd;
+		console.log("ODP: Track search result product click -- " + clickedProdLink + " (search term: " + searchValue + ")");
+		zaius.event('search', { action: 'click' , search_term: searchValue, search_clicked_product: clickedProdLink });
+	});
+});</code></pre><h3 id="usage-in-odp-1">Usage in ODP</h3><p>Search event tracking can be used in a variety of ways. A few quick examples include:</p><ul><li>Top searches</li><li>Top searches without results</li><li>Clickthrough rate for search results</li></ul><p>Build reports in ODP to identify popular searches and searches without results to help drive content creation. Create <a href="https://webhelp.optimizely.com/latest/en/searchnavigation/best-bets.htm">Best Bets</a> in Optimizely Search &amp; Navigation to address searches without results. Build segments to target visitors searching for specific search terms.</p><h2 id="video-events">Video Events</h2><p>Just for fun, a rough implementation of tracking of YouTube video events. Identify users that loaded a video, and track their progress through it. Then use that data to identify popular (or unpopular) videos, or target visitors that stopped a certain video before completion, or visitors that are interested in certain types of videos.</p><h3 id="odp-prep-2">ODP Prep</h3><p>For this example I added three new fields to ODP:</p><ul><li>video_id_yt (YouTube video ID) (type: Text)</li><li>video_play_percentage (type: Number)</li><li>video_title (type: Text)</li></ul><h3 id="video-event-tracking">Video Event Tracking</h3><p>The following script will track YouTube video events, including video loads, video plays, video progress (10%, 25%, 50%, 75%, 90%, and completed), and pauses/restarts. It leverages the <a href="https://developers.google.com/youtube/iframe_api_reference">YouTube API for iframe embeds</a>.</p><p>A couple caveats: the script as-is will only track if there is a single YouTube video block on the page, because it targets the video based on the id="youtube-block" attribute when the block is rendered.</p><pre><code class="language-javascript">var tag = document.createElement('script');
+tag.id = 'youtube-iframe';
+tag.src = 'https://www.youtube.com/iframe_api';
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('youtube-block', {
+        events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+        }
+    });
+}
+
+var sendEvents = true;
+
+var videoDuration;
+var videoId;
+var videoTitle;
+var timer;
+var currentProgress = 0;
+var previousProgress = 0;
+var progressEventPoints = [10, 25, 50, 75, 90];
+
+
+var startedPlay = false;
+var pausedPlay = false;
+var halfway = false;
+
+function writeLoadVideoEvent() {
+    console.log("ODP - video loaded - " + videoTitle);
+    if (sendEvents) {
+        zaius.event("video", {
+            action: "loaded",
+            video_id_yt: videoId,
+            video_title: videoTitle,
+            video_play_percentage: 0,
+            video_action: true
+        });
+    }
+}
+
+function writeStartVideoEvent() {
+    console.log("ODP - video started");
+    if (sendEvents) {
+        zaius.event("video", {
+            action: "started",
+            video_id_yt: videoId,
+            video_title: videoTitle,
+            video_play_percentage: 0,
+            video_action: true
+        });
+    }
+}
+
+function writeHalfVideoEvent() {
+    console.log("ODP - video 50% completed");
+    if (sendEvents) {
+        zaius.event("video", {
+            action: "watched_half",
+            video_id_yt: videoId,
+            video_title: videoTitle,
+            video_play_percentage: 50,
+            video_action: true
+        });
+    }
+}
+
+function writeEndVideoEvent() {
+    console.log("ODP - video completed");
+    if (sendEvents) {
+        zaius.event("video", {
+            action: "watched",
+            video_id_yt: videoId,
+            video_title: videoTitle,
+            video_play_percentage: 100,
+            video_action: true
+        });
+    }
+}
+
+function writeVideoProgressEvent(percent) {
+    console.log("ODP - video " + percent + "% completed");
+    if (sendEvents) {
+        zaius.event("video", {
+            action: "video_progress",
+            video_id_yt: videoId,
+            video_title: videoTitle,
+            video_play_percentage: percent,
+            video_action: true
+        });
+    }
+}
+
+function writePauseVideoEvent(percent) {
+    console.log("ODP - video paused " + percent + "%");
+    if (sendEvents) {
+        zaius.event("video", {
+            action: "paused",
+            video_id_yt: videoId,
+            video_title: videoTitle,
+            video_play_percentage: percent,
+            video_action: true
+        });
+    }
+}
+
+function writeRestartVideoEvent(percent) {
+    console.log("ODP - video restarted at " + percent + "%");
+    if (sendEvents) {
+        zaius.event("video", {
+            action: "restarted",
+            video_id_yt: videoId,
+            video_title: videoTitle,
+            video_play_percentage: percent,
+            video_action: true
+        });
+    }
+}
+
+function onPlayerReady(event) {
+    videoDuration = player.getDuration();
+    videoId = player.getVideoData().video_id;
+    videoTitle = player.getVideoData().title;
+    writeLoadVideoEvent();
+}
+
+function play_progress_reached() {
+    current_time = player.getCurrentTime();
+    currentProgress = parseInt((current_time / videoDuration) * 100);
+    if (player.getPlayerState() == YT.PlayerState.PLAYING) {
+        if (startedPlay == false) {
+            writeStartVideoEvent();
+            startedPlay = true;
+        } else if (pausedPlay == true) {
+            writeRestartVideoEvent(currentProgress);
+            pausedPlay = false;
+        } else if (currentProgress &gt; 0 &amp;&amp; currentProgress % 5 == 0 &amp;&amp; currentProgress &gt; previousProgress) {
+            if (currentProgress &gt; previousProgress &amp;&amp; progressEventPoints.includes(currentProgress)) {
+                writeVideoProgressEvent(currentProgress);
+                previousProgress = currentProgress;
+            }
+        }
+    } else if (player.getPlayerState() == YT.PlayerState.PAUSED) {
+        writePauseVideoEvent(currentProgress);
+        pausedPlay = true;
+        clearInterval(timer);
+    } else if (player.getPlayerState() == YT.PlayerState.ENDED) {
+        writeEndVideoEvent();
+        clearInterval(timer);
+    } else {
+        clearInterval(timer);
+    }
+}
+
+function play_progress_callback() {
+    clearInterval(timer);
+    current_time = player.getCurrentTime();
+    currentProgress = parseInt((current_time / videoDuration) * 100);
+    remaining_time = videoDuration - current_time;
+    if (remaining_time &gt; 0) {
+        timer = setInterval(play_progress_reached, 500);
+    }
+}
+
+function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING) {
+        console.log("Video playing");
+    }
+    clearInterval(timer);
+    play_progress_callback();
+}</code></pre><p>Usage in ODP</p><p>Use the tracked events to identify which videos are getting watched (and watched to completion), versus videos that aren't getting any plays at all or are frequently stopped before the end.</p><p>Here's a sample report, as a starting point:</p><figure class="kg-card kg-image-card"><amp-img src="https://blog.danisaacs.net/content/images/2022/01/video-events-report.png" class="kg-image" alt width="1868" height="454" srcset="https://blog.danisaacs.net/content/images/size/w600/2022/01/video-events-report.png 600w, https://blog.danisaacs.net/content/images/size/w1000/2022/01/video-events-report.png 1000w, https://blog.danisaacs.net/content/images/size/w1600/2022/01/video-events-report.png 1600w, https://blog.danisaacs.net/content/images/2022/01/video-events-report.png 1868w" layout="responsive"></amp-img></figure><h2 id="conclusions">Conclusions</h2><p>Optimizely Data Platform (ODP) provides your team with the flexibility to track any custom events for both known and unknown visitors, and use that information to build reports and create targeted campaigns to increase engagement with your visitors.</p><p>A few additional references for working with ODP:</p><ul><li>Using ODP with Commerce Cloud: <a href="https://www.david-tec.com/2021/05/adding-optimizely-data-platform-to-optimizely-commerce-cloud/">https://www.david-tec.com/2021/05/adding-optimizely-data-platform-to-optimizely-commerce-cloud/</a></li><li>ODP reference guide: <a href="https://world.optimizely.com/blogs/K-Khan-/Dates/2021/6/odp-handy-reference-guide---web-sdk/">https://world.optimizely.com/blogs/K-Khan-/Dates/2021/6/odp-handy-reference-guide---web-sdk/</a></li><li>ODP documentation: <a href="https://docs.zaius.com/">https://docs.zaius.com/</a></li><li>ODP developer documentation: <a href="https://docs.developers.zaius.com/">https://docs.developers.zaius.com/</a></li></ul>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+        <h3>danisaacs.net</h3>
+            <p>Things I want to remember</p>
+        <p><a href="https://blog.danisaacs.net">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>
