@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html ⚡>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+
+    <title>Running with Foundation</title>
+
+    <meta name="description" content="Getting started with Foundation, the Optimizely reference site." />
+    <link rel="canonical" href="https://blog.danisaacs.net/running-with-foundation/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    
+    <meta property="og:site_name" content="danisaacs.net" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Running with Foundation" />
+    <meta property="og:description" content="Getting started with Foundation, the Optimizely reference site." />
+    <meta property="og:url" content="https://blog.danisaacs.net/running-with-foundation/" />
+    <meta property="og:image" content="https://blog.danisaacs.net/content/images/2022/02/foundation.png" />
+    <meta property="article:published_time" content="2022-02-17T02:51:25.000Z" />
+    <meta property="article:modified_time" content="2022-02-17T04:12:39.000Z" />
+    <meta property="article:tag" content="optimizely" />
+    <meta property="article:tag" content="foundation" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Running with Foundation" />
+    <meta name="twitter:description" content="Getting started with Foundation, the Optimizely reference site." />
+    <meta name="twitter:url" content="https://blog.danisaacs.net/running-with-foundation/" />
+    <meta name="twitter:image" content="https://blog.danisaacs.net/content/images/2022/02/foundation.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Dan Isaacs" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="optimizely, foundation" />
+    <meta property="og:image:width" content="2218" />
+    <meta property="og:image:height" content="1456" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "danisaacs.net",
+        "url": "https://blog.danisaacs.net/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog.danisaacs.net/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Dan Isaacs",
+        "url": "https://blog.danisaacs.net/author/dan/",
+        "sameAs": []
+    },
+    "headline": "Running with Foundation",
+    "url": "https://blog.danisaacs.net/running-with-foundation/",
+    "datePublished": "2022-02-17T02:51:25.000Z",
+    "dateModified": "2022-02-17T04:12:39.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://blog.danisaacs.net/content/images/2022/02/foundation.png",
+        "width": 2218,
+        "height": 1456
+    },
+    "keywords": "optimizely, foundation",
+    "description": "Getting started with Foundation, the Optimizely reference site.",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://blog.danisaacs.net/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 4.32" />
+    <link rel="alternate" type="application/rss+xml" title="danisaacs.net" href="https://blog.danisaacs.net/rss/" />
+
+    <style amp-custom>
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        font-size: 62.5%;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    body {
+        min-height: 100vh;
+        margin: 0;
+        padding: 0;
+        color: #3a4145;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.7rem;
+        line-height: 1.55em;
+        font-weight: 400;
+        font-style: normal;
+        background: #fff;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    p,
+    ul,
+    ol,
+    li,
+    dl,
+    dd,
+    hr,
+    pre,
+    form,
+    table,
+    video,
+    figure,
+    figcaption,
+    blockquote {
+        margin: 0;
+        padding: 0;
+    }
+
+    ul[class],
+    ol[class] {
+        padding: 0;
+        list-style: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+    }
+
+    input,
+    button,
+    select,
+    textarea {
+        font: inherit;
+        -webkit-appearance: none;
+    }
+
+    fieldset {
+        margin: 0;
+        padding: 0;
+        border: 0;
+    }
+
+    label {
+        display: block;
+        font-size: 0.9em;
+        font-weight: 700;
+    }
+
+    hr {
+        position: relative;
+        display: block;
+        width: 100%;
+        height: 1px;
+        border: 0;
+        border-top: 1px solid currentcolor;
+        opacity: 0.1;
+    }
+
+    ::selection {
+        text-shadow: none;
+        background: #cbeafb;
+    }
+
+    mark {
+        background-color: #fdffb6;
+    }
+
+    small {
+        font-size: 80%;
+    }
+
+    sub,
+    sup {
+        position: relative;
+        font-size: 75%;
+        line-height: 0;
+        vertical-align: baseline;
+    }
+    sup {
+        top: -0.5em;
+    }
+    sub {
+        bottom: -0.25em;
+    }
+
+    ul li + li {
+        margin-top: 0.6em;
+    }
+
+    a {
+        color: var(--ghost-accent-color, #1292EE);
+        text-decoration-skip-ink: auto;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 0;
+        font-weight: 700;
+        color: #121212;
+        line-height: 1.4em;
+    }
+
+    h1 {
+        font-size: 3.4rem;
+        line-height: 1.1em;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+        line-height: 1.2em;
+    }
+
+    h3 {
+        font-size: 1.8rem;
+    }
+
+    h4 {
+        font-size: 1.7rem;
+    }
+
+    h5 {
+        font-size: 1.6rem;
+    }
+
+    h6 {
+        font-size: 1.6rem;
+    }
+
+    amp-img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+    }
+
+    amp-img img {
+        object-fit: cover;
+    }
+
+    .page-header {
+        padding: 50px 5vmin 30px;
+        text-align: center;
+        font-size: 2rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .page-header a {
+        color: #121212;
+        font-weight: 700;
+        text-decoration: none;
+        font-size: 1.6rem;
+        letter-spacing: -0.1px;
+    }
+
+    .post {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .post-header {
+        margin: 0 5vmin 5vmin;
+        text-align: center;
+    }
+
+    .post-meta {
+        margin: 1rem 0 0 0;
+        text-transform: uppercase;
+        color: #738a94;
+        font-weight: 500;
+        font-size: 1.3rem;
+    }
+
+    .post-image {
+        margin: 0 0 5vmin;
+    }
+
+    .post-image img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .post-content {
+        padding: 0 5vmin;
+    }
+
+    .post-content > * + * {
+        margin-top: 1.5em;
+    }
+
+    .post-content [id]:not(:first-child) {
+        margin: 2em 0 0;
+    }
+
+    .post-content > [id] + * {
+        margin-top: 1rem;
+    }
+
+    .post-content [id] + .kg-card,
+    .post-content blockquote + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content > ul,
+    .post-content > ol,
+    .post-content > dl {
+        padding-left: 1.9em;
+    }
+
+    .post-content hr {
+        margin-top: 40px;
+    }
+
+    .post .post-content hr + * {
+        margin-top: 40px;
+    }
+
+    .post-content amp-img {
+        background-color: #f8f8f8;
+    }
+
+    .post-content blockquote {
+        position: relative;
+        font-style: italic;
+    }
+
+    .post-content blockquote::before {
+        content: "";
+        position: absolute;
+        left: -1.5em;
+        top: 0;
+        bottom: 0;
+        width: 0.3rem;
+        background: var(--ghost-accent-color, #1292EE);
+    }
+
+    .post-content blockquote.kg-blockquote-alt {
+        font-size: 1.2em;
+        font-style: italic;
+        line-height: 1.6em;
+        text-align: center;
+        color: #738a94;
+        padding: 0.75em 3em 1.25em;
+    }
+
+    .post-content blockquote.kg-blockquote-alt::before {
+        display: none;
+    }
+
+    .post-content :not(.kg-card):not([id]) + .kg-card {
+        margin-top: 40px;
+    }
+
+    .post-content .kg-card + :not(.kg-card) {
+        margin-top: 40px;
+    }
+
+    .kg-card figcaption {
+        padding: 1.5rem 1.5rem 0;
+        text-align: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.4em;
+        opacity: 0.6;
+    }
+
+    .kg-card figcaption strong {
+        color: rgba(0,0,0,0.8);
+    }
+
+    .post-content :not(pre) code {
+        vertical-align: middle;
+        padding: 0.15em 0.4em 0.15em;
+        border: #e1eaef 1px solid;
+        font-weight: 400;
+        font-size: 0.9em;
+        line-height: 1em;
+        color: #15171a;
+        background: #f0f6f9;
+        border-radius: 0.25em;
+    }
+
+    .post-content > pre {
+        overflow: scroll;
+        padding: 16px 20px;
+        color: #fff;
+        background: #1F2428;
+        border-radius: 5px;
+        box-shadow: 0 2px 6px -2px rgba(0,0,0,.1), 0 0 1px rgba(0,0,0,.4);
+    }
+
+    .kg-embed-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
+
+    .kg-image-card img {
+        margin: auto;
+    }
+
+    .kg-gallery-card + .kg-gallery-card {
+        margin-top: 0.75em;
+    }
+
+    .kg-gallery-container {
+        position: relative;
+    }
+
+    .kg-gallery-row {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .kg-gallery-image {
+        width: 100%;
+        height: 100%;
+    }
+
+    .kg-gallery-row:not(:first-of-type) {
+        margin: 0.75em 0 0 0;
+    }
+
+    .kg-gallery-image:not(:first-of-type) {
+        margin: 0 0 0 0.75em;
+    }
+
+    .kg-bookmark-card,
+    .kg-bookmark-publisher {
+        position: relative;
+    }
+
+    .kg-bookmark-container,
+    .kg-bookmark-container:hover {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row-reverse;
+        color: currentColor;
+        background: rgba(255,255,255,0.6);
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        text-decoration: none;
+        border-radius: 3px;
+        box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.1), 0 0 1px rgba(0, 0, 0, 0.4);
+        overflow: hidden;
+    }
+
+    .kg-bookmark-content {
+        flex-basis: 0;
+        flex-grow: 999;
+        padding: 20px;
+        order: 1;
+    }
+
+    .kg-bookmark-title {
+        font-weight: 600;
+        font-size: 1.5rem;
+        line-height: 1.3em;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        max-height: 45px;
+        margin: 0.5em 0 0 0;
+        font-size: 1.4rem;
+        line-height: 1.55em;
+        overflow: hidden;
+        opacity: 0.8;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+    }
+
+    .kg-bookmark-metadata {
+        margin-top: 20px;
+    }
+
+    .kg-bookmark-metadata {
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        font-size: 1.3rem;
+        line-height: 1.3em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .kg-bookmark-description {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-metadata amp-img {
+        width: 18px;
+        height: 18px;
+        max-width: 18px;
+        max-height: 18px;
+        margin-right: 10px;
+    }
+
+    .kg-bookmark-thumbnail {
+        display: flex;
+        flex-basis: 20rem;
+        flex-grow: 1;
+        justify-content: flex-end;
+    }
+
+    .kg-bookmark-thumbnail amp-img {
+        max-height: 200px;
+    }
+
+    .kg-bookmark-author {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+    }
+
+    .kg-bookmark-publisher::before {
+        content: "•";
+        margin: 0 .5em;
+    }
+
+    .kg-toggle-card-icon {
+        display: none;
+    }
+
+    .kg-toggle-content {
+        margin-top: 0.8rem;
+    }
+
+    .kg-product-card-container {
+        background: transparent;
+        padding: 20px;
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: inset 0 0 0 1px rgb(124 139 154 / 25%);
+    }
+
+    .kg-product-card-description p {
+        margin-top: 1.5em;
+    }
+
+    .kg-product-card-description ul {
+        margin-left: 24px;
+    }
+
+    .kg-product-card-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+    }
+
+    .kg-product-card-rating-star {
+        height: 28px;
+        width: 20px;
+        margin-right: 2px;
+    }
+
+    .kg-product-card-rating-star svg {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+    opacity: 0.15;
+    }
+
+    .kg-product-card-rating-active.kg-product-card-rating-star svg {
+    opacity: 1;
+    }
+
+    .kg-nft-card-container {
+        position: relative;
+        display: flex;
+        flex: auto;
+        flex-direction: column;
+        text-decoration: none;
+        font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,Open Sans,Helvetica Neue,sans-serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        box-shadow: 0 2px 6px -2px rgb(0 0 0 / 10%), 0 0 1px rgb(0 0 0 / 40%);
+        width: 100%;
+        max-width: 512px;
+        color: #15212A;
+        background: #fff;
+        border-radius: 5px;
+        transition: none;
+        margin: 0 auto;
+    }
+
+    .kg-nft-metadata {
+        padding: 2.0rem;
+    }
+
+    .kg-nft-image-container {
+        position: relative;
+    }
+
+    .kg-nft-image {
+        display: flex;
+        border-radius: 5px 5px 0 0;
+    }
+
+    .kg-nft-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .kg-nft-header h4.kg-nft-title {
+        font-size: 1.9rem;
+        font-weight: 700;
+        margin: 0;
+        color: #15212A;
+    }
+
+    .kg-nft-header amp-img {
+        max-width: 114px;
+        max-height: 26px;
+    }
+
+    .kg-nft-opensea-logo {
+        margin-top: 2px;
+        width: 100px;
+    }
+
+    .kg-nft-creator {
+        font-family: inherit;
+        color: #95A1AD;
+    }
+
+    .kg-nft-creator span {
+        font-weight: 500;
+        color: #15212A;
+    }
+
+    .kg-nft-card p.kg-nft-description {
+        font-size: 1.4rem;
+        line-height: 1.4em;
+        margin: 2.0rem 0 0;
+        color: #222;
+    }
+
+    .kg-button-card {
+        display: flex;
+        position: static;
+        align-items: center;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .kg-btn {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 2.0rem;
+        height: 4.0rem;
+        line-height: 4.0rem;
+        font-size: 1.65rem;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+    }
+
+    .kg-btn:hover {
+        opacity: 0.85;
+    }
+
+    .kg-btn-accent {
+        background-color: var(--ghost-accent-color, #1292EE);
+        color: #fff;
+    }
+
+    .kg-callout-card {
+        display: flex;
+        padding: 20px 28px;
+        border-radius: 3px;
+    }
+
+    .kg-callout-card-grey {
+        background: rgba(124, 139, 154, 0.13);
+    }
+
+    .kg-callout-card-white {
+        background: transparent;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-callout-card-blue {
+        background: rgba(33, 172, 232, 0.12);
+    }
+
+    .kg-callout-card-green {
+        background: rgba(52, 183, 67, 0.12);
+    }
+
+    .kg-callout-card-yellow {
+        background: rgba(240, 165, 15, 0.13);
+    }
+
+    .kg-callout-card-red {
+        background: rgba(209, 46, 46, 0.11);
+    }
+
+    .kg-callout-card-pink {
+        background: rgba(225, 71, 174, 0.11);
+    }
+
+    .kg-callout-card-purple {
+        background: rgba(135, 85, 236, 0.12);
+    }
+
+    .kg-callout-card-accent {
+        background: var(--ghost-accent-color);
+        color: #fff;
+    }
+
+    .kg-callout-card-accent a {
+        color: #fff;
+    }
+
+    .kg-callout-emoji {
+        padding-right: 16px;
+        line-height: 1.3;
+        font-size: 1.25em;
+    }
+
+    .kg-header-card {
+        padding: 6em 3em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .kg-header-card.kg-size-small {
+        padding-top: 4em;
+        padding-bottom: 4em;
+    }
+
+    .kg-header-card.kg-size-large {
+        padding-top: 12em;
+        padding-bottom: 12em;
+    }
+
+    .kg-header-card.kg-width-full {
+        padding-left: 4em;
+        padding-right: 4em;
+    }
+
+    .kg-header-card.kg-align-left {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    .kg-header-card.kg-style-dark {
+        background: #15171a;
+        color: #ffffff;
+    }
+
+    .kg-header-card.kg-style-light {
+        color: #15171a;
+        border: 1px solid rgba(124, 139, 154, 0.25);
+        border-width: 1px 0;
+    }
+
+    .kg-header-card.kg-style-accent {
+        background-color: var(--ghost-accent-color);
+    }
+
+    .kg-header-card.kg-style-image {
+        background-color: #e7e7eb;
+        background-size: cover;
+        background-position: center center;
+    }
+
+    .kg-header-card h2 {
+        font-size: 4em;
+        font-weight: 700;
+        line-height: 1.1em;
+        margin: 0;
+    }
+
+    .kg-header-card h2 strong {
+        font-weight: 800;
+    }
+
+    .kg-header-card.kg-size-small h2 {
+        font-size: 3em;
+    }
+
+    .kg-header-card.kg-size-large h2 {
+        font-size: 5em;
+    }
+
+    .kg-header-card h3 {
+        font-size: 1.25em;
+        font-weight: 500;
+        line-height: 1.3em;
+        margin: 0;
+    }
+
+    .kg-header-card h3 strong {
+        font-weight: 600;
+    }
+
+    .kg-header-card.kg-size-small h3 {
+        font-size: 1em;
+    }
+
+    .kg-header-card.kg-size-large h3 {
+        font-size: 1.5em;
+    }
+
+    .kg-header-card:not(.kg-style-light) h2,
+    .kg-header-card:not(.kg-style-light) h3 {
+        color: #ffffff;
+    }
+
+    .kg-header-card a.kg-header-card-button {
+        display: flex;
+        position: static;
+        align-items: center;
+        padding: 0 1.2em;
+        height: 2.4em;
+        line-height: 1em;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-size: 0.95em;
+        font-weight: 600;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: opacity 0.2s ease-in-out;
+        background-color: var(--ghost-accent-color);
+        color: #ffffff;
+        margin: 1.75em 0 0;
+    }
+
+    .kg-header-card a.kg-header-card-button:hover {
+        opacity: 0.85;
+    }
+
+    .kg-header-card.kg-size-large a.kg-header-card-button {
+        margin-top: 2em;
+    }
+
+    .kg-header-card.kg-size-small a.kg-header-card-button {
+        margin-top: 1.5em;
+    }
+
+    .kg-header-card.kg-style-image a.kg-header-card-button,
+    .kg-header-card.kg-style-dark a.kg-header-card-button {
+        background: #ffffff;
+        color: #15171a;
+    }
+
+    .kg-header-card.kg-style-accent a.kg-header-card-button {
+        background: #ffffff;
+        color: var(--ghost-accent-color);
+    }
+
+    .kg-audio-card {
+        display: flex;
+        width: 100%;
+        box-shadow: inset 0 0 0 1px rgba(124, 139, 154, 0.25);
+    }
+
+    .kg-audio-thumbnail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80px;
+        min-width: 80px;
+        height: 80px;
+        background: transparent;
+        object-fit: cover;
+        aspect-ratio: 1/1;
+        border-radius: 3px 0 0 3px;
+    }
+
+    .kg-audio-thumbnail.placeholder {
+        background: var(--ghost-accent-color);
+    }
+
+    .kg-audio-thumbnail.placeholder svg {
+        width: 24px;
+        height: 24px;
+        fill: white;
+    }
+
+    .kg-audio-player-container {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 100%;
+        --seek-before-width: 0%;
+        --volume-before-width: 100%;
+        --buffered-width: 0%;
+    }
+
+    .kg-audio-title {
+        width: 100%;
+        padding: 8px 12px 0;
+        border: none;
+        font-family: inherit;
+        font-size: 1.1em;
+        font-weight: 700;
+        background: transparent;
+    }
+
+    .kg-audio-player {
+        display: none;
+    }
+
+    .kg-width-full.kg-card-hascaption {
+        display: grid;
+        grid-template-columns: inherit;
+    }
+
+    .post-content table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    .post-content th {
+        padding: 0.5em 0.8em;
+        text-align: left;
+        font-size: .75em;
+        text-transform: uppercase;
+    }
+
+    .post-content td {
+        padding: 0.4em 0.7em;
+    }
+
+    .post-content tbody tr:nth-child(2n + 1) {
+        background-color: rgba(0,0,0,0.1);
+        padding: 1px;
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td:last-child {
+        box-shadow:
+            inset 1px 0 rgba(0,0,0,0.1),
+            inset -1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:nth-child(2n + 2) td {
+        box-shadow: inset 1px 0 rgba(0,0,0,0.1);
+    }
+
+    .post-content tbody tr:last-child {
+        border-bottom: 1px solid rgba(0,0,0,.1);
+    }
+
+    .page-footer {
+        padding: 60px 5vmin;
+        margin: 60px auto 0;
+        text-align: center;
+        background-color: #f8f8f8;
+    }
+
+    .page-footer h3 {
+        margin: 0.5rem 0 0 0;
+    }
+
+    .page-footer p {
+        max-width: 500px;
+        margin: 1rem auto 1.5rem;
+        font-size: 1.7rem;
+        line-height: 1.5em;
+        color: rgba(0,0,0,0.6)
+    }
+
+    .powered {
+        display: inline-flex;
+        align-items: center;
+        margin: 30px 0 0;
+        padding: 6px 9px 6px 6px;
+        border: rgba(0,0,0,0.1) 1px solid;
+        font-size: 12px;
+        line-height: 12px;
+        letter-spacing: -0.2px;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+        font-weight: 500;
+        color: #222;
+        text-decoration: none;
+        background: #fff;
+        border-radius: 6px;
+    }
+
+    .powered svg {
+        height: 16px;
+        width: 16px;
+        margin: 0 6px 0 0;
+    }
+
+    @media (max-width: 600px) {
+        body {
+            font-size: 1.6rem;
+        }
+        h1 {
+            font-size: 3rem;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+        }
+    }
+
+    @media (max-width: 400px) {
+        h1 {
+            font-size: 2.6rem;
+            line-height: 1.15em;
+        }
+        h2 {
+            font-size: 2rem;
+            line-height: 1.2em;
+        }
+        h3 {
+            font-size: 1.7rem;
+        }
+    }
+
+    :root {--ghost-accent-color: #FF1A75;}
+    </style>
+
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+
+    
+
+</head>
+
+<body class="amp-template">
+    <header class="page-header">
+        <a href="https://blog.danisaacs.net">
+                danisaacs.net
+        </a>
+    </header>
+
+    <main class="content" role="main">
+        <article class="post">
+
+            <header class="post-header">
+                <h1 class="post-title">Running with Foundation</h1>
+                <section class="post-meta">
+                    Dan Isaacs -
+                    <time class="post-date" datetime="2022-02-16">16 Feb 2022</time>
+                </section>
+            </header>
+            <figure class="post-image">
+                <amp-img src="https://blog.danisaacs.net/content/images/2022/02/foundation.png" width="600" height="340" layout="responsive"></amp-img>
+            </figure>
+            <section class="post-content">
+
+                <p>If you're reading this, you've probably already heard of Foundation, our <a href="https://www.optimizely.com/">Optimizely</a>  (formerly Episerver) Content Cloud + B2C Commerce Cloud reference site. Want to run a local instance for testing or evaluation purposes? Want to use it as a starter site for a build? No problem – it's freely available up in GitHub: <a href="https://github.com/episerver/Foundation">https://github.com/episerver/Foundation</a>. Below I'm going to walk through a few tips + tricks on getting it running, but first two important callouts: </p><ol><li>Use the latest &amp; greatest! This article is focused on the CMS 12 / Commerce 14 version, running on .NET 5. If you want to use the earlier version, you can still follow the setup steps detailed in the readme on the (at the time of this writing) <em>master </em>branch. (But really, that'd be a mistake – .NET 5 is the way to go.)</li><li>I'm focused here on the full version of Foundation – there's also a <a href="https://github.com/episerver/foundation-mvc-cms">CMS-only version</a> if that's more your bag. (I think most of the instructions below should apply to that one, but I make no promises!)</li></ol><h3 id="getting-ready">Getting ready</h3><p>As noted above, the repository is at: <a href="https://github.com/episerver/Foundation">https://github.com/episerver/Foundation</a> – for .NET5 (at least at the moment) you'll want to be working with the <a href="https://github.com/episerver/Foundation/tree/main"><em>main</em> branch</a>.</p><figure class="kg-card kg-image-card"><amp-img src="https://blog.danisaacs.net/content/images/2022/02/foundation-select-main-branch-e.png" class="kg-image" alt width="231" height="312" layout="fixed"></amp-img></figure><p>Take a look at the readme to see the system requirements. On Windows, make you'll want SQL Server, Node.JS, and .NET5 runtime. (And some other stuff for running under IIS, but I'll cover that below.) For Mac/Linux (we can run on Mac and Linux now! Exciting!), the setup requires Docker (for SQL Server). You could approach that in other ways, but it's not built in to the setup script.</p><h3 id="running-locally">Running locally</h3><p>If you just want to run things locally (for example, for dev or for evaluation purposes), setup is a breeze. Just follow the instructions in the readme for your system type. </p><p>The only pro-tip I'd throw in here is to update your <em>appsettings.json</em> file with a valid Optimizely Search &amp; Navigation (AKA Optimizely Find (AKA Episerver Find)) index before running the solution. Don't have an index? Sign up at <a href="https://find.episerver.com">https://find.episerver.com</a> and generate a free dev index, and then add the index and service URL details:</p><figure class="kg-card kg-image-card kg-card-hascaption"><amp-img src="https://blog.danisaacs.net/content/images/2022/02/find.png" class="kg-image" alt width="446" height="103" layout="responsive"></amp-img><figcaption>changeme!</figcaption></figure><p>After executing the <em>dotnet run...</em> command, wait until new warnings stop being shown, and then pull up your browser and hit <em>http://localhost:5000</em>. (If it doesn't load or you get a "connection refused" message, try again in 30 seconds. The first time up can take a minute or two or three, as it does some initialization steps and content imports.)</p><p>To stop the site, press Ctrl-C in your Powershell window (you may need to hit it a few times, if your laptop's like mine).</p><h3 id="graduating-to-iis">Graduating to IIS</h3><p>Ready to step it up, and run under IIS? It's not all that different, but there are a few gotchas to be aware of.</p><p>Note: this is not intended to be an in-depth tutorial on all details of IIS setup. For a deeper dive into creating an IIS site for Optimizely CMS running on .NET 5, a more detailed write-up can be found here: <u><a href="https://www.jondjones.com/learn-optimizely/cms/how-to-install-optimizely-cms-12-and-configure-a-development-environment/">https://www.jondjones.com/learn-optimizely/cms/how-to-install-optimizely-cms-12-and-configure-a-development-environment/</a></u></p><h4 id="iis-server-setup-one-time-only">IIS server setup (one-time-only!)</h4><p>That said: if this is your first time setting up a .NET 5 site in IIS, you must install the .NET 5 IIS module. Download and install the “Hosting Bundle” from: <u><a href="https://dotnet.microsoft.com/download/dotnet/5.0">https://dotnet.microsoft.com/download/dotnet/5.0</a></u></p><figure class="kg-card kg-image-card"><amp-img src="https://blog.danisaacs.net/content/images/2022/02/iis-hosting-bundle-2.png" class="kg-image" alt width="516" height="302" layout="responsive"></amp-img></figure><h4 id="get-the-code">Get the code</h4><p>Download the code from the GitHub repository. (Note: several options to complete this step are presented below, depending on your familiarity with Git. Or you can skip past this step because you already know how to do it. It's your world, I'm just living in it.)</p><p>In all cases, I'm assuming the root of the repo is in the folder <em>\foundation.</em></p><h5 id="option-1-download-the-main-branch-from-the-repository-as-a-zip-file">Option 1: download the main branch from the repository as a ZIP file</h5><ol><li>Open the repo in your web browser:</li><li>Change to the “<em>main</em>” branch</li><li>Click the “Code” button, and select “Download ZIP”</li><li>After the file has downloaded, right click and select “Properties”. Check the “Unblock” box and click OK.</li><li>Unzip the file to a folder</li></ol><h5 id="option-2-command-line-clone-the-repository-and-then-checkout-the-main-branch">Option 2: command line! Clone the repository and then checkout the main branch</h5><ol><li>Clone the repo:<br /><em>git clone https://github.com/episerver/foundation.git</em></li><li>Go into the “foundation” directory where you cloned the repo</li><li>Check out the main branch:<br /><em>git checkout main</em></li></ol><h5 id="option-3-more-command-line-clone-checkout-the-main-branch-in-one-step">Option 3: more command line! Clone + checkout the main branch in one step</h5><ol><li>Clone and checkout the <em>main </em>branch:<br /><em>git clone -b main https://github.com/episerver/foundation.git</em></li></ol><h4 id="update-appsettingsjson">Update appsettings.json</h4><p>Remember earlier when I wrote about adding a Find (search) index to the <em>appsettings.json</em>? Do that. It might save some headaches (search is pretty integral to the Foundation site).</p><h4 id="have-a-license">Have a license?</h4><p>If you have a license (in the form of a <em>License.config</em> file), copy it to the site directory:<br />	<em>\foundation\src\Foundation\</em> </p><p>Note: a license file isn’t needed for running under localhost. You might be able to sign up for a demo license at <a href="https://license.episerver.com/">https://license.episerver.com/</a>.</p><h4 id="run-the-setup">Run the setup</h4><p>Return to the root folder and run the <em>setup.cmd</em> script as an administrator – this will create and configure the database, and some other initial setup. (Note, the “app name” property will just be used in the database names – it will not create an IIS site during this process.)</p><figure class="kg-card kg-image-card"><amp-img src="https://blog.danisaacs.net/content/images/2022/02/code-setup.jpg" class="kg-image" alt width="640" height="427" srcset="https://blog.danisaacs.net/content/images/size/w600/2022/02/code-setup.jpg 600w, https://blog.danisaacs.net/content/images/2022/02/code-setup.jpg 640w" layout="responsive"></amp-img></figure><h4 id="publish-the-site">Publish the site</h4><p>First, create a publish folder -- I created it in the root repository folder (<em>\foundation</em>) and called it “publish”, so it had the following path:</p><p><em>	\foundation\publish</em></p><p>Now, open a command line (I like Powershell, myself).</p><ol><li>Switch to the site root directory: <em>c:\whatever\your\path\is\foundation</em></li><li>Publish to the directory you just created (this example assumes the path I used; adjust the path to your publish folder as needed):</li></ol><p><em>	dotnet publish -c Debug -o .\publish /p:EnvironmentName=Development</em></p><p>(Once you have your site up and running, subsequent publishes can be tricky – I'm going to include some notes at the bottom of this article around that, but for now this should be all you need.)</p><h4 id="set-up-the-site-in-iis">Set up the site in IIS</h4><p>We're almost there! (Note to self (left publicly to remind me later): maybe this should be scripted and included as an optional step in the setup?) Until then – open up IIS.</p><ol><li>Create a new site (right click "Sites" and select "Add Website…")</li><li>Site name: foundation-net5 [you can use anything you want here]</li><li>Physical path: full path to the “publish” folder created in the earlier step</li><li>Host name: the url you want to use to access the site.<br /><br />Fun tip: if you’re just interested in setting the site up in IIS but don’t need to access it externally --<br /><br />If you use the domain "mysite.localmachine.name" (substituting anything for "mysite"), you can set it up locally in IIS without needing to update your hosts file. For example, I used foundation-net5.localmachine.name. (For more info -- <a href="https://www.david-tec.com/2013/07/Never-edit-your-hosts-file-again-when-working-on-localhost/" rel="noreferrer noopener">https://www.david-tec.com/2013/07/Never-edit-your-hosts-file-again-when-working-on-localhost/</a> -- thanks, David!)</li></ol><p>When you created the site, it will have automatically created an app pool. You're going to need to update the Application Pool settings to avoid errors with OpenIDConnect:</p><p>Right click the Application Pool created when you created the site in the previous step (by default, it should have the same name as the site), and select “Advanced Settings”</p><figure class="kg-card kg-image-card"><amp-img src="https://blog.danisaacs.net/content/images/2022/02/app-pool-setup-01-e.png" class="kg-image" alt width="324" height="188" layout="responsive"></amp-img></figure><p>Find the “Identity” setting, and click the dots to open the menu to change the setting</p><figure class="kg-card kg-image-card"><amp-img src="https://blog.danisaacs.net/content/images/2022/02/app-pool-setup-02-e.png" class="kg-image" alt width="505" height="85" layout="responsive"></amp-img></figure><p>Change the setting to “LocalSystem”, and click OK</p><figure class="kg-card kg-image-card"><amp-img src="https://blog.danisaacs.net/content/images/2022/02/app-pool-setup-03-e.png" class="kg-image" alt width="392" height="234" layout="responsive"></amp-img></figure><h4 id="thats-it">That's it!</h4><p>You should be all set – open your browser, and try to access the site at the domain you added when setting up the site in IIS.</p><h3 id="troubleshooting">Troubleshooting</h3><h5 id="windowscryptographicexception">WindowsCryptographicException</h5><p>Get a “WindowsCryptographicException” when you try to load the site? Double check that you updated the AppPool settings to use LocalSystem identity.</p><h5 id="get-a-syntax-error-while-assets-are-built">Get a syntax error while assets are built?</h5><p><sub>[webpack-cli] <span>SyntaxError: Invalid regular expression: /(\p{Uppercase_Letter}+|\p{Lowercase_Letter}|\d)(\p{Uppercase_Letter}+)/: Invalid escape</span></sub></p>
+<p>Make sure you're on a recent version of Node.</p><h5 id="dont-see-anything">Don't see anything?</h5><p>Make sure your monitor is on.</p><h3 id="more-tips">More tips!</h3><h4 id="publishing-site-changes-while-running-under-iis">Publishing site changes while running under IIS</h4><p>After the site is running under IIS, for subsequent publish commands you need to stop the site’s application pool before publishing. Otherwise, the files are locked by the app pool, and it will not deploy correctly.</p><p>To avoid this issue, you can manually add a file called “app_offline.htm” to the publish directory before publishing – this tells IIS to release the files.</p><p>To automate this process: create a Powershell script called "<em>publish.ps1</em>" and put it in the root <em>/foundation</em> folder. Add the following lines to the file:</p><pre><code class="language-powershell">$pathToApp = '.\publish' 
+New-Item -Path $pathToApp -Name "app_offline.htm" -ItemType "file" 
+dotnet publish -c Debug -o $pathToApp /p:EnvironmentName=Development 
+Remove-Item -Path $pathToApp\app_offline.htm </code></pre><p>Adjust the path in the first line as needed, based on your publish folder location. Run this script from Powershell via the command “<em>.\publish.ps1</em>” whenever you want to publish the site, instead of just the standard <em>dotnet publish</em> command we used earlier.</p><h4 id="changing-the-port-when-running-under-localhost">Changing the port when running under localhost </h4><p>Want to change the port the site runs on locally? Update the “applicationUrl” setting in the launchSettings.json file (<em>\src\Foundation\Properties\launchSettings.json</em>) </p><p>For example, to use port 8000, change that line to: </p><p>	<em>"applicationUrl": "https://localhost:8001;http://localhost:8000" </em></p><h2 id="conclusions">Conclusions</h2><p>Hopefully this (much longer than I meant to) post will help you get the .NET 5 version of Foundation up and running locally. Have any questions? Feel free to reach out. Find an issue? Create an issue in the GitHub repo. Wish this article had more fun images? Me too friend, me too.</p><figure class="kg-card kg-image-card"><amp-img src="https://blog.danisaacs.net/content/images/2022/02/foundation-on-linux.png" class="kg-image" alt width="1503" height="691" srcset="https://blog.danisaacs.net/content/images/size/w600/2022/02/foundation-on-linux.png 600w, https://blog.danisaacs.net/content/images/size/w1000/2022/02/foundation-on-linux.png 1000w, https://blog.danisaacs.net/content/images/2022/02/foundation-on-linux.png 1503w" layout="responsive"></amp-img></figure>
+
+            </section>
+
+        </article>
+    </main>
+    <footer class="page-footer">
+        <h3>danisaacs.net</h3>
+            <p>Things I want to remember</p>
+        <p><a href="https://blog.danisaacs.net">Read more posts →</a></p>
+        <a class="powered" href="https://ghost.org" target="_blank" rel="noopener"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 156 156"><g fill="none" fill-rule="evenodd"><rect fill="#15212B" width="156" height="156" rx="27"/><g transform="translate(36 36)" fill="#F6F8FA"><path d="M0 71.007A4.004 4.004 0 014 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0130 84H4a4 4 0 01-4-4.007v-8.986zM50 71.007A4.004 4.004 0 0154 67h26a4 4 0 014 4.007v8.986A4.004 4.004 0 0180 84H54a4 4 0 01-4-4.007v-8.986z"/><rect y="34" width="84" height="17" rx="4"/><path d="M0 4.007A4.007 4.007 0 014.007 0h41.986A4.003 4.003 0 0150 4.007v8.986A4.007 4.007 0 0145.993 17H4.007A4.003 4.003 0 010 12.993V4.007z"/><rect x="67" width="17" height="17" rx="4"/></g></g></svg> Published with Ghost</a>
+    </footer>
+    
+</body>
+</html>
