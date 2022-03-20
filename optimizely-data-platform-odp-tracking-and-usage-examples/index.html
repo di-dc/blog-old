@@ -1,20 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 
-    <title>Optimizely Data Platform (ODP) - Tracking and Usage Examples — danisaacs.net</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
-    <meta name="HandheldFriendly" content="True" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Optimizely Data Platform (ODP) - Tracking and Usage Examples</title>
+	<meta name="HandheldFriendly" content="True" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" type="text/css" href="/assets/css/main.css?v=e20c730bdb" />
+	<link rel="stylesheet" type="text/css" href="/assets/css/style.css?v=0a5f73b9a8" />
 
-<!-- For speed, I’ve added the response from this link straight into defer.css-->
-<!--<link rel="stylesheet" href="//brick.a.ssl.fastly.net/Source+Serif+Pro:400,700/Source+Sans+Pro:400,900,400i,900i/Alegreya:400i,700i">-->
+	<script>
+			var siteUrl = 'https://blog.danisaacs.net';
+	</script>
 
-    <meta name="description" content="Getting started with Optimizely Data Platform -- Some example tracking and usage of ODP" />
+	<script>
+			var localTheme = localStorage.getItem('attila_theme');
+			switch (localTheme) {
+					case 'dark':
+							document.documentElement.classList.add('theme-dark');
+							break;
+					case 'light':
+							document.documentElement.classList.add('theme-light');
+							break;
+					default:
+							break;
+			}
+	</script>
+
+
+
+			<style>
+				.theme-dark:root {
+				  --ghost-accent-color: #ff6633;
+				}
+				@media (prefers-color-scheme: dark) {
+				  html:not(.theme-light):root {
+				    --ghost-accent-color: #ff6633;
+				  }
+				}
+			</style>
+
+	<meta name="description" content="Getting started with Optimizely Data Platform -- Some example tracking and usage of ODP" />
     <link rel="canonical" href="https://blog.danisaacs.net/optimizely-data-platform-odp-tracking-and-usage-examples/" />
     <meta name="referrer" content="no-referrer-when-downgrade" />
     <link rel="amphtml" href="https://blog.danisaacs.net/optimizely-data-platform-odp-tracking-and-usage-examples/amp/" />
@@ -86,37 +114,90 @@
     <meta name="generator" content="Ghost 4.36" />
     <link rel="alternate" type="application/rss+xml" title="danisaacs.net" href="https://blog.danisaacs.net/rss/" />
     
-    <script defer src="/public/cards.min.js?v=e20c730bdb"></script>
-    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=e20c730bdb">
-    <script async defer data-website-id="3c1dfb7b-228e-4cf3-9a63-4ed564c7a995" src="https://analytics.danisaacs.net/umamii.js" data-domains="blog.danisaacs.net"></script><style>:root {--ghost-accent-color: #FF1A75;}</style>
+    <script defer src="/public/cards.min.js?v=0a5f73b9a8"></script>
+    <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=0a5f73b9a8">
+    <script async defer data-website-id="3c1dfb7b-228e-4cf3-9a63-4ed564c7a995" src="https://analytics.danisaacs.net/umamii.js" data-domains="blog.danisaacs.net"></script>
+<script>
+  var gh_search_key = 'b38dcb5b4a4a9d5d5bb84d2035';
+  var gh_search_migration = 'v2';
+</script><style>:root {--ghost-accent-color: #FF1A75;}</style>
 </head>
-<body class="post-template tag-optimizely tag-odp tag-optimizely-data-platform" id="body">
 
-    
+<body class="post-template tag-optimizely tag-odp tag-optimizely-data-platform">
 
-<div class="main-header--content main-nav--content clearfix">
-  <a href="https://blog.danisaacs.net">
-    <h3><span class="back-arrow">← </span>danisaacs.net</h3>
-  </a>
+	<div class="nav-header">
+		<nav class="nav-wrapper" aria-label="Main">
+				<ul>
+		<li class="nav-home"><a href="https://blog.danisaacs.net/"><span>Home</span></a></li>
+		<li class="nav-about"><a href="https://blog.danisaacs.net/about/"><span>About</span></a></li>
+		<li class="nav-optimizely"><a href="https://blog.danisaacs.net/tag/optimizely/"><span>Optimizely</span></a></li>
+</ul>
+
+				<ul class="nav-meta">
+  <li class="nav-search" style="display: none;">
+    <a title="Search">
+      <i class="icon icon-search" aria-hidden="true"></i>
+      <span>Search</span>
+    </a>
+  </li>
+  <!--
+    <li class="nav-subscribe">
+      <a href="#/portal">Subscribe</a>
+    </li>
+  -->
+</ul>
+		</nav>
+
+		<div class="nav-wrapper-control">
+			<div class="inner">
+				<a class="nav-menu" role="button"><i class="icon icon-menu" aria-hidden="true"></i>Menu</a>
+				<a class="nav-search" style="display: none;" title="Search" role="button"><i class="icon icon-search" aria-hidden="true"></i></a>
+			</div>
+		</div>
+	</div>
+	<div class="nav-close" role="button" aria-label="Close"></div>
+
+	<section class="page-wrapper">
+
+		
+
+<div class="progress-container">
+	<span class="progress-bar"></span>
 </div>
-<div hidden class="notification-area" id="notifications">
-</div>
 
-<main class="content">
+<header class="post-header  has-cover ">
+	<div class="inner">
+		<span class="post-info">
+			<span class="post-type">Article</span>
+			<span class="post-count">optimizely</span>
+		</span>
+		<h1 class="post-title">Optimizely Data Platform (ODP) - Tracking and Usage Examples</h1>
+		<div class="post-meta">
+			<div class="post-meta-avatars">
+					<figure class="post-meta-avatar avatar">
+					</figure>
+			</div>
+			<h4 class="post-meta-author"><a href="/author/dan/">Dan Isaacs</a></h4>
+			<time datetime="13-01-2022">13 Jan 2022</time> &bull; 7 min read
+		</div>
+		<div class="post-cover cover">
+			<img
+			srcset="/content/images/size/w320/2022/01/odp-2.png 320w,
+              /content/images/size/w640/2022/01/odp-2.png 640w,
+              /content/images/size/w960/2022/01/odp-2.png 960w,
+              /content/images/size/w1920/2022/01/odp-2.png 1920w"
+      src="/content/images/size/w1920/2022/01/odp-2.png"
+			alt="Optimizely Data Platform (ODP) - Tracking and Usage Examples" />
+		</div>
+	</div>
+</header>
 
-    <article class="post tag-optimizely tag-odp tag-optimizely-data-platform">
+<main class="content" role="main">
+	<article class="post tag-optimizely tag-odp tag-optimizely-data-platform">
+		<div class="inner">
 
-        <header class="post-header">
-            <h1 class="post-title typl8-gamma">Optimizely Data Platform (ODP) - Tracking and Usage Examples</h1>
-            <section class="post-meta">
-                By <a href="/author/dan/">Dan Isaacs</a>
-                <time class="post-date" datetime="2022-01-13"> Jan 13th 2022</time>
-                <span class="post-tags">Tags: <a href="/tag/optimizely/">optimizely</a>, <a href="/tag/odp/">odp</a>, <a href="/tag/optimizely-data-platform/">optimizely data platform</a></span>
-            </section>
-        </header>
-
-        <section class="post-content">
-            <p>The goal of this post is to provide some examples of working with <a href="https://www.optimizely.com/products/intelligence/data-platform/">Optimizely Data Platform (ODP)</a> with <a href="https://www.optimizely.com/products/content/">Optimizely Content Cloud</a> and <a href="https://www.optimizely.com/products/commerce/b2c/">Commerce Cloud</a>. Note that, while focused on those platforms using our <a href="https://github.com/episerver/Foundation">Foundation reference implementation</a>, the overall strategies can be used for tracking on any solution.</p><p>Rather than recreate the wheel, for a great starting point please reference David Knipe's blog post <a href="https://www.david-tec.com/2021/05/adding-optimizely-data-platform-to-optimizely-commerce-cloud/">"Adding Optimizely Data Platform to Optimizely Commerce Cloud"</a>. It provides a very solid base on which to build, and allows us to go straight into other tracking examples and how you might use the data in ODP itself. One key step from that blog post you must complete is to add the standard JavaScript tracking script for ODP to your site, to enable pageview and customer tracking. The script can be found by going to the ODP "Integrations" admin screen, and clicking into the "JavaScript Tag" integration -- refer to the <a href="https://docs.zaius.com/hc/en-us/articles/360033327194-Install-the-Zaius-JavaScript-tag">ODP JavaScript tag documentation here</a> for more details.</p><p>Now, let's get into some custom event tracking.</p><h2 id="optimizely-forms-events">Optimizely Forms Events</h2><h3 id="odp-prep">ODP Prep</h3><p>First you'll need to create a new field in ODP. Log in to ODP, then go to account settings by clicking the gear icon in the top-right of the page.</p><figure class="kg-card kg-image-card"><img src="https://blog.danisaacs.net/content/images/2022/01/adding_field-01.png" class="kg-image" alt loading="lazy" width="224" height="101"></figure><p>Then select "Create New Field" to create the new property -- I used the following values (the "field name" will be used in the tracking section below):</p><figure class="kg-card kg-image-card"><img src="https://blog.danisaacs.net/content/images/2022/01/adding_field-02.png" class="kg-image" alt loading="lazy" width="564" height="89"></figure><h3 id="tracking">Tracking</h3><p>The example tracking below for Optimizely Forms leverages the available <a href="https://world.optimizely.com/documentation/developer-guides/forms/handling-events-for-forms/">Forms client-side events</a> to track form impressions and form submissions. Alternatively, form submission tracking could be done server-side by modifying it to use the .NET events documented on that page.</p><pre><code class="language-javascript">// ODP Tracking for Optimizely Forms
+			<section class="post-content">
+				<p>The goal of this post is to provide some examples of working with <a href="https://www.optimizely.com/products/intelligence/data-platform/">Optimizely Data Platform (ODP)</a> with <a href="https://www.optimizely.com/products/content/">Optimizely Content Cloud</a> and <a href="https://www.optimizely.com/products/commerce/b2c/">Commerce Cloud</a>. Note that, while focused on those platforms using our <a href="https://github.com/episerver/Foundation">Foundation reference implementation</a>, the overall strategies can be used for tracking on any solution.</p><p>Rather than recreate the wheel, for a great starting point please reference David Knipe's blog post <a href="https://www.david-tec.com/2021/05/adding-optimizely-data-platform-to-optimizely-commerce-cloud/">"Adding Optimizely Data Platform to Optimizely Commerce Cloud"</a>. It provides a very solid base on which to build, and allows us to go straight into other tracking examples and how you might use the data in ODP itself. One key step from that blog post you must complete is to add the standard JavaScript tracking script for ODP to your site, to enable pageview and customer tracking. The script can be found by going to the ODP "Integrations" admin screen, and clicking into the "JavaScript Tag" integration -- refer to the <a href="https://docs.zaius.com/hc/en-us/articles/360033327194-Install-the-Zaius-JavaScript-tag">ODP JavaScript tag documentation here</a> for more details.</p><p>Now, let's get into some custom event tracking.</p><h2 id="optimizely-forms-events">Optimizely Forms Events</h2><h3 id="odp-prep">ODP Prep</h3><p>First you'll need to create a new field in ODP. Log in to ODP, then go to account settings by clicking the gear icon in the top-right of the page.</p><figure class="kg-card kg-image-card"><img src="https://blog.danisaacs.net/content/images/2022/01/adding_field-01.png" class="kg-image" alt loading="lazy" width="224" height="101"></figure><p>Then select "Create New Field" to create the new property -- I used the following values (the "field name" will be used in the tracking section below):</p><figure class="kg-card kg-image-card"><img src="https://blog.danisaacs.net/content/images/2022/01/adding_field-02.png" class="kg-image" alt loading="lazy" width="564" height="89"></figure><h3 id="tracking">Tracking</h3><p>The example tracking below for Optimizely Forms leverages the available <a href="https://world.optimizely.com/documentation/developer-guides/forms/handling-events-for-forms/">Forms client-side events</a> to track form impressions and form submissions. Alternatively, form submission tracking could be done server-side by modifying it to use the .NET events documented on that page.</p><pre><code class="language-javascript">// ODP Tracking for Optimizely Forms
 
 if (typeof $$epiforms !== 'undefined') {
     $$epiforms(document).ready(function myfunction() {
@@ -360,201 +441,168 @@ function onPlayerStateChange(event) {
     clearInterval(timer);
     play_progress_callback();
 }</code></pre><p>Usage in ODP</p><p>Use the tracked events to identify which videos are getting watched (and watched to completion), versus videos that aren't getting any plays at all or are frequently stopped before the end.</p><p>Here's a sample report, as a starting point:</p><figure class="kg-card kg-image-card"><img src="https://blog.danisaacs.net/content/images/2022/01/video-events-report.png" class="kg-image" alt loading="lazy" width="1868" height="454" srcset="https://blog.danisaacs.net/content/images/size/w600/2022/01/video-events-report.png 600w, https://blog.danisaacs.net/content/images/size/w1000/2022/01/video-events-report.png 1000w, https://blog.danisaacs.net/content/images/size/w1600/2022/01/video-events-report.png 1600w, https://blog.danisaacs.net/content/images/2022/01/video-events-report.png 1868w" sizes="(min-width: 720px) 720px"></figure><h2 id="conclusions">Conclusions</h2><p>Optimizely Data Platform (ODP) provides your team with the flexibility to track any custom events for both known and unknown visitors, and use that information to build reports and create targeted campaigns to increase engagement with your visitors.</p><p>A few additional references for working with ODP:</p><ul><li>Using ODP with Commerce Cloud: <a href="https://www.david-tec.com/2021/05/adding-optimizely-data-platform-to-optimizely-commerce-cloud/">https://www.david-tec.com/2021/05/adding-optimizely-data-platform-to-optimizely-commerce-cloud/</a></li><li>ODP reference guide: <a href="https://world.optimizely.com/blogs/K-Khan-/Dates/2021/6/odp-handy-reference-guide---web-sdk/">https://world.optimizely.com/blogs/K-Khan-/Dates/2021/6/odp-handy-reference-guide---web-sdk/</a></li><li>ODP documentation: <a href="https://docs.zaius.com/">https://docs.zaius.com/</a></li><li>ODP developer documentation: <a href="https://docs.developers.zaius.com/">https://docs.developers.zaius.com/</a></li></ul>
-        </section>
+			</section>
 
-        <br clear="all">
+			<section class="post-footer">
 
-        <footer class="post-footer">
+				<div class="post-share">
+					<span class="post-info-label">Share</span>
+					<a title="Twitter" aria-label="Twitter" class="twitter" href="https://twitter.com/share?text=Optimizely Data Platform (ODP) - Tracking and Usage Examples&url=https://blog.danisaacs.net/optimizely-data-platform-odp-tracking-and-usage-examples/" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+						<i class="icon icon-twitter" aria-hidden="true"></i>
+					</a>
+					<a title="Facebook" aria-label="Facebook" class="facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.danisaacs.net/optimizely-data-platform-odp-tracking-and-usage-examples/" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+						<i class="icon icon-facebook" aria-hidden="true"></i>
+					</a>
+					<a title="LinkedIn" aria-label="LinkedIn" class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://blog.danisaacs.net/optimizely-data-platform-odp-tracking-and-usage-examples//&amp;title=Optimizely Data Platform (ODP) - Tracking and Usage Examples" onclick="window.open(this.href, 'linkedin-share', 'width=930,height=720');return false;">
+						<i class="icon icon-linkedin" aria-hidden="true"></i>
+					</a>
+					<a title="Email" aria-label="Email" class="email" href="mailto:?subject=Optimizely Data Platform (ODP) - Tracking and Usage Examples&amp;body=https://blog.danisaacs.net/optimizely-data-platform-odp-tracking-and-usage-examples/">
+						<i class="icon icon-mail" aria-hidden="true"></i>
+					</a>
+				</div>
+
+				<aside class="post-tags">
+					<span class="post-info-label">Topic</span>
+					<a href="/tag/optimizely/">optimizely</a> <a href="/tag/odp/">odp</a> <a href="/tag/optimizely-data-platform/">optimizely data platform</a>
+				</aside>
+
+			</section>
 
 
-
-            <section class="author">
-                <h4><a href="/author/dan/">Dan Isaacs</a></h4>
-
-                    <p>Read <a href="/author/dan/">more posts</a> by this author.</p>
-                <div class="author-meta">
-                    
-                    
-                    
-                    
-                </div>
-            </section>
+			<section class="post-comments">
+				<a id="show-disqus" class="post-comments-activate">Show Comments</a>
+			   <div id="disqus_thread"></div>
+			</section>
 
 
-            <section class="share">
-                <h4>Share this post</h4>
-                <a class="icon-twitter" href="https://twitter.com/share?text=Optimizely%20Data%20Platform%20(ODP)%20-%20Tracking%20and%20Usage%20Examples&amp;url=https://blog.danisaacs.net/optimizely-data-platform-odp-tracking-and-usage-examples/"
-                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
-                    <span class="hidden">Twitter</span>
-                </a>
-                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://blog.danisaacs.net/optimizely-data-platform-odp-tracking-and-usage-examples/"
-                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
-                    <span class="hidden">Facebook</span>
-                </a>
-                <a class="icon-linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.danisaacs.net/optimizely-data-platform-odp-tracking-and-usage-examples/&title=Optimizely%20Data%20Platform%20(ODP)%20-%20Tracking%20and%20Usage%20Examples&source=LinkedIn"
-                   onclick="window.open(this.href, 'linkedin-share', 'width=490,height=530');return false;">
-                    <span class="hidden">LinkedIn</span>
-                </a>
-            </section>
+			<aside class="post-nav">
 
-        </footer>
-    <!--
-    If you want Disqus comments, uncomment this. Make sure to set your disqus shortname in partials/comments.hbs first!
-     -->
-    </article>
+					<a class="post-nav-next" href="/running-with-foundation/">
+						<section class="post-nav-teaser">
+							<i class="icon icon-arrow-left" aria-label="Next post"></i>
+							<h2 class="post-nav-title">Running with Foundation</h2>
+							<p class="post-nav-excerpt">Getting started with Foundation, the Optimizely reference site.&hellip;</p>
+							<p class="post-nav-meta"><time datetime="16-02-2022">16 Feb 2022</time></p>
+						</section>
+					</a>
+
+				<div class="clear"></div>
+			</aside>
+
+		</div>
+	</article>
 </main>
 
 
-    <footer class="site-footer">
-  <a class="subscribe icon-feed" href="https://blog.danisaacs.net/rss/">
-   <span class="tooltip sans-serif">Subscribe!</span>
-  </a>
-<!--  Gives your visitors something to do when they finish an article other than commenting, sharing, or closing the tab. -->
-  <nav>
-    <ul class="nav">
-  <li class="nav-data-privacy " role="presentation">
-    <a href="https://blog.danisaacs.net/privacy/">Data &amp; privacy</a>
-  </li>
-  <li class="nav-contact " role="presentation">
-    <a href="https://blog.danisaacs.net/contact/">Contact</a>
-  </li>
 
 
 
+		<div class="search-wrapper">
+			<div class="search">
+		    <form class="search-form">
+          <input class="search-field" type="text" placeholder="Search …">
+          <button class="search-button" type="submit">
+						<i class="icon icon-search" aria-hidden="true"></i>
+					</button>
+		    </form>
+				<div class="popular-wrapper">
+					<h4 class="popular-title">Topics</h4>
+					<span class="popular-tags post-tags">
+								<a href='/tag/optimizely/'>optimizely: 2</a>
+								<a href='/tag/odp/'>odp: 1</a>
+								<a href='/tag/optimizely-data-platform/'>optimizely data platform: 1</a>
+								<a href='/tag/foundation/'>foundation: 1</a>
+					</span>
+				</div>
+				<div class="search-result"></div>
+			</div>
+			<button class="search-wrapper-close" aria-label="Close"></button>
+		</div>
+
+		<div class="nav-footer">
+			<nav class="nav-wrapper" aria-label="Footer">
+				<span class="nav-copy">danisaacs.net &copy; 2022  <a class="nav-rss" title="RSS" href="https://blog.danisaacs.net/rss/" target="_blank"><i class="icon icon-rss" aria-hidden="true"></i></a></span>
+				<ul>
+		<li class="nav-data-privacy"><a href="https://blog.danisaacs.net/privacy/"><span>Data &amp; privacy</span></a></li>
+		<li class="nav-contact"><a href="https://blog.danisaacs.net/contact/"><span>Contact</span></a></li>
 </ul>
 
-  </nav>
-  <div class="site-footer__attribution">
-    <span class="print-data copyright-notice">
-      &copy; 2022
-      <a href="https://blog.danisaacs.net/">danisaacs.net</a>
-      &nbsp;&bull;&nbsp;
-    </span>
+				<span class="nav-credits">Published with <a href="https://ghost.org">Ghost</a> &bull; Theme <a href="https://github.com/zutrinken/attila">Attila</a> &bull; <a class="menu-item js-theme" href="#" data-system="System theme" data-dark="Dark theme" data-light="Light theme"><span class="theme-icon"></span><span class="theme-text">System theme</span> </a> </span>
+			</nav>
+		</div>
 
-    <span>
-      <a href="http://github.com/curiositry/mnml-ghost-theme">MNML</a>
-      theme by
-      <a href="http://curiositry.github.io">Curiositry</a>
-    </span>
+	</section>
 
-    <span>
-      &nbsp;&bull;&nbsp;
-      Published with
-      <a href="https://ghost.org">
-        &nbsp;<span class="icon-ghost typl8-zeta"></span> Ghost
-      </a>
-    </span>
-  </div>
-</footer>
+	<script type="text/javascript" src="/assets/js/script.js?v=0a5f73b9a8"></script>
 
-    <!--
-    This generates a handsome modal menu and hamburger icon. If you want to use it, edit     menu.hbs and add your links (line ~146), then remove the ! from this helper to           activate it.
-    -->
-      <!--
-THE MENU: Enabling this partial creates a hamburger icon that opens a menu. It’s responsive, lightweight, and works with javascript disabled.
--->
+	<script>
+  $(document).ready(function () {
+		var viewport = $(window);
+		var post = $('.post-content');
+		// Responsive videos with fitVids
+    post.fitVids();
+		// Format code blocks and add line numbers
+		function codestyling() {
+	    $('pre code').each(function(i, e) {
+				// Code highlight
+	      hljs.highlightBlock(e);
+	      // No lines for plain text blocks
+	      if (!$(this).hasClass('language-text')) {
+	        var code = $(this);
+					// Calculate amount of lines
+	        var lines = code.html().split(/\n(?!$)/g).length;
+	        var numbers = [];
+	        if (lines > 1) {
+	          lines++;
+	        }
+	        for (i = 1; i < lines; i++) {
+	          numbers += '<span class="line" aria-hidden="true">' + i + '</span>';
+	        }
+	        code.parent().append('<div class="lines">' + numbers + '</div>');
+	      }
+	    });
+	  }
+	  codestyling();
+		// Reading progress bar on window top
+	  function readingProgress() {
+			var postBottom = post.offset().top + post.height();
+			var viewportHeight = viewport.height();
+      var progress = 100 - (((postBottom - (viewport.scrollTop() + viewportHeight) + viewportHeight / 3) / (postBottom - viewportHeight + viewportHeight / 3)) * 100);
+      $('.progress-bar').css('width', progress + '%');
+      (progress > 100) ? $('.progress-container').addClass('complete'): $('.progress-container').removeClass('complete');
+	  }
+	  readingProgress();
+		// Trigger reading progress
+	  viewport.on({
+	    'scroll': function() {
+	      readingProgress();
+	    },
+	    'resize': function() {
+	      readingProgress();
+	    },
+	    'orientationchange': function() {
+	      readingProgress();
+	    }
+	  });
 
-
-<!-- Trigger element, which is hidden -->
-<input type="checkbox" id="menu-trigger" />
-
-<!-- Thus label which control the trigger. The hamburger icon is a background image in      the CSS (base64 encoded svg) in main.css. Hover and close states in defer.css-->
-<label for="menu-trigger" id="open-menu" class="open-menu btn"></label>
-
-<!-- The menu that slides in. Styles in defer.css -->
-<nav class="menu" id="menu">
-  <ul class="nav">
-  <li class="nav-home " role="presentation">
-    <a href="https://blog.danisaacs.net/">Home</a>
-  </li>
-  <li class="nav-about " role="presentation">
-    <a href="https://blog.danisaacs.net/about/">About</a>
-  </li>
-  <li class="nav-optimizely " role="presentation">
-    <a href="https://blog.danisaacs.net/tag/optimizely/">Optimizely</a>
-  </li>
-
-
-
-</ul>
-
-</nav>
-
-<!--
-This makes the rest of the page move down with the menu for style points, but is              optional. The menu works fine with pure css.
--->
-<script>
-  var navTrigger = document.getElementById("menu-trigger");
-  var menu = document.getElementById("menu");
-  var bodyTag = document.getElementsByTagName("body")[0];
-
-
-navTrigger.onclick = function () {
-  if(navTrigger.checked){
-    bodyTag.classList.add("menu-transition");
-    document.getElementsByTagName("body")[0].style.marginTop = menu.clientHeight+"px";
-  }else{
-    bodyTag.classList.add("menu-transition");
-    document.getElementsByTagName("body")[0].style.marginTop = "0";
-  }
-}
+			$('.post-comments').css({
+				'display': 'block'
+			});
+			var disqus = 'blog-di';
+	    $('#show-disqus').on('click', function() {
+	      $.ajax({
+	        type: "GET",
+	        url: "//" + disqus + ".disqus.com/embed.js",
+	        dataType: "script",
+	        cache: true
+	      });
+	      $(this).parent().addClass('activated');
+	    });
+  });
 </script>
 
 
-    <!-- Ghost outputs important scripts and data with this tag -->
-    
-
-    <!--
-    This loads katex.hbs in; if a page has anything with the class .math, katex.hbs           loads Khan Academy’s Tex math typesetting library and runs it on the content.
-
-    If you don’t want to use KaTeX, comment this out.
-    -->
-    <script type="text/javascript">
-var mathAreas = document.getElementsByClassName("math");
-if (mathAreas){
-  var ss = document.createElement("link");
-  ss.type = "text/css";
-  ss.rel = "stylesheet";
-  ss.href = "//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css";
-  document.getElementsByTagName("head")[0].appendChild(ss);
-
-  var script = document.createElement( 'script' );
-  script.type = 'text/javascript';
-  script.src = '//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js';
-  document.body.appendChild(script);
-
-  window.onload = function() {
-    Array.prototype.forEach.call(
-      document.getElementsByClassName("math"),
-      function(el) {
-        try {
-          katex.render(el.innerHTML, el, { displayMode: true });
-        } catch (e) { console.log(e); }
-      }
-    );
-  }
-}
-</script>
-
-    <script>
-      var cb = function() {
-        var l = document.createElement('link'); l.rel = 'stylesheet';
-        l.href = '/assets/css/defer.css?v=e20c730bdb';
-        var h = document.getElementsByTagName('head')[0];
-        h.parentNode.insertBefore(l, h);
-      };
-      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
-          webkitRequestAnimationFrame || msRequestAnimationFrame;
-      if (raf) raf(cb);
-      else window.addEventListener('load', cb);
-    </script>
-
-    <script>
-      var siteTitle = "danisaacs.net";
-    </script>
-
-    <script async src="/assets/js/index.js?v=e20c730bdb"></script>
-    <script defer src="/assets/js/prism.min.js?v=e20c730bdb"></script>
+	
 
 </body>
 </html>
