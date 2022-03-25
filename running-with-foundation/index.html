@@ -117,10 +117,6 @@
     <link rel="stylesheet" type="text/css" href="/public/cards.min.css?v=0a5f73b9a8">
     <script async defer data-website-id="3c1dfb7b-228e-4cf3-9a63-4ed564c7a995" src="https://a.danisaacs.net/imamu.js" data-domains="blog.danisaacs.net"></script>
 <script>
-    const button = document.getElementById('show-disqus');
-    umami.trackEvent('Show Comments button click', 'click');
-</script>
-<script>
   var gh_search_key = 'b38dcb5b4a4a9d5d5bb84d2035';
   var gh_search_migration = 'v2';
 </script><style>:root {--ghost-accent-color: #FF1A75;}</style>
@@ -375,7 +371,10 @@ Remove-Item -Path $pathToApp\app_offline.htm </code></pre><p>Adjust the path in 
 </script>
 
 
-	
+	<script>
+    const button = (document.getElementById("show-disqus") || {});
+    button.onclick = () => umami('Show Comments button click', 'click');
+</script>
 
 </body>
 </html>
