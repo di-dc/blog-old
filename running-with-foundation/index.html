@@ -373,7 +373,7 @@ Remove-Item -Path $pathToApp\app_offline.htm </code></pre><p>Adjust the path in 
 
 	<script>
     const button = (document.getElementById("show-disqus") || {});
-    button.onclick = () => umami('Show Comments button click', 'click');
+    button.onclick = () => umami.trackEvent('Show Comments button click', 'click');
 </script>
 
 </body>
