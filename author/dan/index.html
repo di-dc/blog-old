@@ -261,7 +261,7 @@
 
 	<script>
     const button = (document.getElementById("show-disqus") || {});
-    button.onclick = () => umami('Show Comments button click', 'click');
+    button.onclick = () => umami.trackEvent('Show Comments button click', 'click');
 </script>
 
 </body>
